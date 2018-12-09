@@ -1,0 +1,4 @@
+﻿  5_fields.cpp
+c:\users\lwagenlehner\documents\visual studio 2017\projekte\vhb\tutorialcpp\5_fields\5_fields.cpp(15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\lwagenlehner\documents\visual studio 2017\projekte\vhb\tutorialcpp\5_fields\5_fields.cpp(36): warning C4305: 'initializing': truncation from 'double' to 'float'
+  5_fields.vcxproj -> C:\Users\lwagenlehner\Documents\Visual Studio 2017\Projekte\vhb\TutorialCpp\Debug\5_fields.exe
