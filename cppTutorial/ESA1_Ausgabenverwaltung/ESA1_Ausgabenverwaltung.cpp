@@ -24,7 +24,6 @@ void printWhichInvoiceToRemove();
 string getMonthAsString(Month month);
 string getCategoryAsString(Category category);
 void printLine();
-void printMenu();
 string convertDoubleToString(double value);
 
 // Klasse Rechnung

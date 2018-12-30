@@ -10,7 +10,10 @@ using namespace std;
 #define MAX_EMPLOYEE 500
 
 void printLine();
-Date *createNewDate();
+void printMenu();
+int getMenuRequest();
+bool isMenuSelectionValid(int request);
+
 
 class Date {
 public:
@@ -30,6 +33,8 @@ string Date::getAsString() {
 	return day + "." + month + '.' + year;
 }
 
+Date *createNewDate();
+Date *getCurrentDate();
 
 class Employee {
 private:
@@ -56,7 +61,7 @@ void Employee::printNameAndFirstName() {
 	cout << "Name: " << name << ", Vorname: " << firstName << endl;
 }
 void Employee::print() {
-	cout << "Name: " << name << ", Vorname: " << firstName << ", Geburtstag: " << birthday->getAsString() << ", Resturlaub: "<<(holidayDays-usedHolidayDays)<<" Tag(e)"<<endl;
+	cout << "Name: " << name << ", Vorname: " << firstName << ", Geburtstag: " << birthday->getAsString() << ", Resturlaub: " << (holidayDays - usedHolidayDays) << " Tag(e)" << endl;
 }
 void Employee::calculateHolidayDays(Date *currentDate) {
 	int age = currentDate->year - birthday->year;
@@ -78,6 +83,7 @@ public:
 	void deleteEmployee(int index);
 	void printEmployee(int index);
 	void printAllEmplyee();
+
 };
 Management::Management() {
 	amountEmployee = 0;
@@ -114,16 +120,103 @@ void Management::createNewEmployee(Date *currentDate) {
 		}
 	}
 }
+void Management::deleteEmployee(int index) {
+	if (index >= 0 || index < MAX_EMPLOYEE) {
+		if (employeeList[index] != NULL) {
+			employeeList[index] = NULL;
+			amountEmployee--;
+		}
+	}
+}
+void Management::printEmployee(int index) {
+	if (index >= 0 || index < MAX_EMPLOYEE) {
+		if (employeeList[index] != NULL) {
+			employeeList[index]->print();
+		}
+	}
+}
+void Management::printAllEmplyee() {
+	for (int i = 0; i < MAX_EMPLOYEE; i++) {
+		if (employeeList[i] != NULL) {
+			cout << i << ".";
+			employeeList[i]->print();
+		}
+	}
+}
 
 int main()
 {
-	Management verwaltung;
+	cout << "Urlaubsverwaltung von Lukas Wagenlehner" << endl << endl;
+
+	Management *management;
+	Date *currentDate;
+	int selection;
+	bool loop = false;
+
+	currentDate = getCurrentDate();
+	management = new Management();
+
+	while (loop)
+	{
+		printMenu();
+		if (isMenuSelectionValid(selection = getMenuRequest())) {
+			printLine();
+			switch (selection)
+			{
+			case 1:
+				management->createNewEmployee(currentDate);
+				break;
+			case 2:
+				break;
+			case 3:
+				management->printAllEmplyee();
+				break;
+			case 4:
+				break;
+			case 5:
+				break;
+
+			default:
+				loop = false;
+				break;
+			}
+		}
+		else {
+			break;
+		}
+	}
+
 	system("pause");
 	return EXIT_SUCCESS;
 }
 // für Gestalltung für das Menu
 void printLine() {
 	cout << "-----------------------------------------------------------------------------------" << endl;
+}
+void printMenu() {
+	printLine();
+	cout << "[1] Neuen Mitarbeiter anlegen" << endl;
+	cout << "[2] Mitarbeiter l\x94schen" << endl;
+	cout << "[3] Alle Mitarbeiter auflisten" << endl;
+	cout << "[4] Mitarbeiter suchen und detallierte Ausgabe" << endl;
+	cout << "[5] Mitarbeiter Urlaubstage anrechnen" << endl;
+	cout << "[6] Programm beenden" << endl;
+	printLine();
+}
+int getMenuRequest() {
+	int request;
+	if(!(cin >> request)){
+		return -1;
+	}
+	return request;
+}
+bool isMenuSelectionValid(int request) {
+	if (request > 0 && request < 7) {
+		return true;
+	}
+	else {
+		return false;
+	}
 }
 Date *createNewDate() {
 	int day;
@@ -137,4 +230,8 @@ Date *createNewDate() {
 	cout << "Jahr:" << endl;
 	cin >> year;
 	return new Date(day, month, year);
+}
+Date *getCurrentDate() {
+	cout << "Bitte aktuelles Datum eingeben:" << endl;
+	return createNewDate();
 }
