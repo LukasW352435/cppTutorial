@@ -1,86 +1,140 @@
 #include "pch.h"
 #include <iostream>
+#include <cstdlib>
+#include <iomanip>
+#include <string>
+#include <sstream>
+
 using namespace std;
 
-#define MAX_MITARBEITER 500
+#define MAX_EMPLOYEE 500
 
-class Datum {
+void printLine();
+Date *createNewDate();
+
+class Date {
 public:
-    int Tag;
-    int Monat;
-    int Jahr;
-    Datum();
-    Datum(int Tag,int Monat,int Jahr);
+	int day;
+	int month;
+	int year;
+	Date();
+	Date(int day, int month, int year);
+	string getAsString();
 };
-Datum::Datum() {
-
+Date::Date()
+{
 }
-Datum::Datum(int Tag,int Monat,int Jahr):Tag(Tag),Monat(Monat),Jahr(Jahr) {
-
+Date::Date(int day, int month, int year) :day(day), month(month), year(year) {
+}
+string Date::getAsString() {
+	return day + "." + month + '.' + year;
 }
 
 
-class Mitarbeiter {
+class Employee {
 private:
-    bool gueltig;
-    string Name;
-    string Vorname;
-    Datum Geburtsdatum;
-    int VerbrauchteUrlaubsTage;
-    int UrlaubsTage;
+	string name;
+	string firstName;
+	Date *birthday;
+	int usedHolidayDays;
+	int holidayDays;
 public:
-    Mitarbeiter();
-    Mitarbeiter(string Name,string Vorname,Datum Geburtsdatum);
-    ~Mitarbeiter();
-    void BerechneUrlaubsTage(Datum aktuellesDatum);
-
+	Employee();
+	Employee(string name, string firstName, Date *birthday);
+	void printNameAndFirstName();
+	void print();
+	void calculateHolidayDays(Date *currentDate);
 };
-Mitarbeiter::Mitarbeiter() {
-    gueltig = false;
+Employee::Employee()
+{
+}
+Employee::Employee(string name, string firstName, Date *birthday) :name(name), firstName(firstName), birthday(birthday) {
+	usedHolidayDays = 0;
+	holidayDays = 0;
+}
+void Employee::printNameAndFirstName() {
+	cout << "Name: " << name << ", Vorname: " << firstName << endl;
+}
+void Employee::print() {
+	cout << "Name: " << name << ", Vorname: " << firstName << ", Geburtstag: " << birthday->getAsString() << ", Resturlaub: "<<(holidayDays-usedHolidayDays)<<" Tag(e)"<<endl;
+}
+void Employee::calculateHolidayDays(Date *currentDate) {
+	int age = currentDate->year - birthday->year;
+	if (age >= 50) {
+		holidayDays = 32;
+	}
+	else {
+		holidayDays = 30;
+	}
 }
 
-Mitarbeiter::Mitarbeiter(string Name, string Vorname, Datum Geburtsdatum):Name(Name),Vorname(Vorname),Geburtsdatum(Geburtsdatum) {
-    VerbrauchteUrlaubsTage = 0;
-    UrlaubsTage = 0;
-    gueltig = true;
-}
-Mitarbeiter::~Mitarbeiter() {
-
-}
-
-void Mitarbeiter::BerechneUrlaubsTage(Datum aktuellesDatum) {
-    int alter = aktuellesDatum.Jahr - Geburtsdatum.Jahr;
-    if (alter >= 50) {
-        UrlaubsTage = 32;
-    }
-    else{
-        UrlaubsTage = 30;
-    }
-}
-
-class Verwaltung {
+class Management {
 private:
-    Mitarbeiter MitarbeiterListe[MAX_MITARBEITER];
+	Employee *employeeList[MAX_EMPLOYEE];
+	int amountEmployee;
 public:
-    Verwaltung();
-    bool MitarbeiterAnlegen(Mitarbeiter neuerMitarbeiter);
-    bool MitarbeiterLoeschen(int index);
-    void AuflistungAllerMitarbeiter();
+	Management();
+	void createNewEmployee(Date *currentDate);
+	void deleteEmployee(int index);
+	void printEmployee(int index);
+	void printAllEmplyee();
 };
-Verwaltung::Verwaltung() {
-
+Management::Management() {
+	amountEmployee = 0;
 }
-bool Verwaltung::MitarbeiterAnlegen(Mitarbeiter neuerMitarbeiter) {
-    for (int i = 0; i < MAX_MITARBEITER; i++) {
-        if (MitarbeiterListe[i] == ) {
+void Management::createNewEmployee(Date *currentDate) {
+	if (amountEmployee == MAX_EMPLOYEE) {
+		cout << "Speicher voll, es können nur " << MAX_EMPLOYEE << "Mitarbeiter gespeichert werden." << endl;
+		return;
+	}
+	string name;
+	string firstName;
+	Date *birthday;
+	Employee *employee;
 
-        }
-    }
+	cout << "Neuer Mitarbeiter" << endl;
+	printLine();
+
+	cout << "Bitte Name eingeben:" << endl;
+	cin >> name;
+
+	cout << "Bitte Vorname eingeben:" << endl;
+	cin >> firstName;
+	cout << "Bitte Geburtsdatum eingeben:" << endl;
+	birthday = createNewDate();
+
+	employee = new Employee(name, firstName, birthday);
+	employee->calculateHolidayDays(currentDate);
+
+	for (int i = 0; i < MAX_EMPLOYEE; i++) {
+		if (employeeList[i] == NULL) {
+			employeeList[i] = employee;
+			amountEmployee++;
+			break;
+		}
+	}
 }
 
 int main()
 {
-    Verwaltung verwaltung;
-    system("pause");
-    return EXIT_SUCCESS;
+	Management verwaltung;
+	system("pause");
+	return EXIT_SUCCESS;
+}
+// für Gestalltung für das Menu
+void printLine() {
+	cout << "-----------------------------------------------------------------------------------" << endl;
+}
+Date *createNewDate() {
+	int day;
+	int month;
+	int year;
+
+	cout << "Tag:" << endl;
+	cin >> day;
+	cout << "Monat:" << endl;
+	cin >> month;
+	cout << "Jahr:" << endl;
+	cin >> year;
+	return new Date(day, month, year);
 }
