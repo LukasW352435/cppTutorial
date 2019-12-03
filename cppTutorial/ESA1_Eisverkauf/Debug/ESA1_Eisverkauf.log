@@ -1,3 +1,4 @@
-﻿  ESA1_Eisverkauf.cpp
-c:\users\lwagenlehner\source\repos\cpptutorial\cpptutorial\esa1_eisverkauf\esa1_eisverkauf.cpp(117): warning C4129: 'c': unrecognized character escape sequence
+﻿  pch.cpp
+  ESA1_Eisverkauf.cpp
+C:\Users\lwagenlehner\source\repos\cppTutorial\cppTutorial\ESA1_Eisverkauf\ESA1_Eisverkauf.cpp(117,13): warning C4129: 'c': unrecognized character escape sequence
   ESA1_Eisverkauf.vcxproj -> C:\Users\lwagenlehner\source\repos\cppTutorial\cppTutorial\Debug\ESA1_Eisverkauf.exe

@@ -25,6 +25,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ESA1_Ausgabenverwaltung", "
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ESA2_Motorradvermietung", "ESA2_Motorradvermietung\ESA2_Motorradvermietung.vcxproj", "{D207B06A-19AB-4FAC-9E8B-A91AD15A882C}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Fragebogen", "Fragebogen\Fragebogen.vcxproj", "{7A9462AD-FD2B-481D-8CEB-14FBF9293A90}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -145,6 +147,16 @@ Global
 		{D207B06A-19AB-4FAC-9E8B-A91AD15A882C}.Release|x64.Build.0 = Release|x64
 		{D207B06A-19AB-4FAC-9E8B-A91AD15A882C}.Release|x86.ActiveCfg = Release|Win32
 		{D207B06A-19AB-4FAC-9E8B-A91AD15A882C}.Release|x86.Build.0 = Release|Win32
+		{7A9462AD-FD2B-481D-8CEB-14FBF9293A90}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{7A9462AD-FD2B-481D-8CEB-14FBF9293A90}.Debug|x64.ActiveCfg = Debug|x64
+		{7A9462AD-FD2B-481D-8CEB-14FBF9293A90}.Debug|x64.Build.0 = Debug|x64
+		{7A9462AD-FD2B-481D-8CEB-14FBF9293A90}.Debug|x86.ActiveCfg = Debug|Win32
+		{7A9462AD-FD2B-481D-8CEB-14FBF9293A90}.Debug|x86.Build.0 = Debug|Win32
+		{7A9462AD-FD2B-481D-8CEB-14FBF9293A90}.Release|Any CPU.ActiveCfg = Release|Win32
+		{7A9462AD-FD2B-481D-8CEB-14FBF9293A90}.Release|x64.ActiveCfg = Release|x64
+		{7A9462AD-FD2B-481D-8CEB-14FBF9293A90}.Release|x64.Build.0 = Release|x64
+		{7A9462AD-FD2B-481D-8CEB-14FBF9293A90}.Release|x86.ActiveCfg = Release|Win32
+		{7A9462AD-FD2B-481D-8CEB-14FBF9293A90}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

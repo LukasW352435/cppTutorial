@@ -1,5 +1,5 @@
 ﻿  pch.cpp
   5_fields.cpp
-c:\users\lwagenlehner\source\repos\cpptutorial\cpptutorial\5_fields\5_fields.cpp(15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-c:\users\lwagenlehner\source\repos\cpptutorial\cpptutorial\5_fields\5_fields.cpp(36): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\lwagenlehner\source\repos\cppTutorial\cppTutorial\5_fields\5_fields.cpp(15,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\lwagenlehner\source\repos\cppTutorial\cppTutorial\5_fields\5_fields.cpp(36,87): warning C4305: 'initializing': truncation from 'double' to 'float'
   5_fields.vcxproj -> C:\Users\lwagenlehner\source\repos\cppTutorial\cppTutorial\Debug\5_fields.exe

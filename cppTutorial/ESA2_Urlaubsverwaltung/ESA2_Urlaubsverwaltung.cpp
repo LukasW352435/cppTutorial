@@ -16,7 +16,6 @@ bool isMenuSelectionValid(int request);
 int getEmployeeIndexForDelete();
 int getEmployeeIndexForTakeHolidays();
 
-
 class Date {
     // Datum für Geburtsdatum und aktuelles Datum
 public:
@@ -320,8 +319,9 @@ int main()
 	system("pause");
 	return EXIT_SUCCESS;
 }
-// für Gestalltung für das Menu
+
 void printLine() {
+    // für Gestalltung für das Menu
 	cout << "-----------------------------------------------------------------------------------" << endl;
 }
 void printMenu() {
